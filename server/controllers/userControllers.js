@@ -1,9 +1,11 @@
 const User = require("../models/Users");
+const Admin = require("../models/Admin");
+const Seller = require("../models/Seller");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const signup = async (request, response) => {
   try {
-    const { name, email, password } = request.body;
+    const { name, email, password, role } = request.body;
     if (name === "" || email === "" || password === "") {
       response.status(401).json({ error: "fill all the fields" });
     }
@@ -20,6 +22,14 @@ const signup = async (request, response) => {
       };
       const createNewuser = await User.create(user);
       const flag = await createNewuser.save();
+      if (role === "seller") {
+        const seller = {
+          user_id: createNewuser._id,
+          org_name: "helloworld seller",
+        };
+        const createSeller = await Seller.create(seller);
+        const check = await createSeller.save();
+      }
       console.log(flag);
       if (flag) {
         response.status(200).json({ message: "user successfully created" });

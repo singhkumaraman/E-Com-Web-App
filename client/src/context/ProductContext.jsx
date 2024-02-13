@@ -15,13 +15,14 @@ export function ProductContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const getProducts = async () => {
     try {
-      const response = await fetch("https://dummyjson.com/products", {
+      const response = await fetch("http://localhost:5000/api/products/fetch", {
         method: "GET",
         headers: {
           "Context-Type": "application/json",
         },
       });
       const data = await response.json();
+      // console.log(data);
       dispatch({ type: "LOADING_PRODUCT", payload: data });
     } catch (error) {
       console.log(error);
