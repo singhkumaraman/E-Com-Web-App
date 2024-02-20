@@ -1,11 +1,10 @@
 const productReducer = (state, action) => {
   switch (action.type) {
     case "LOADING_PRODUCT":
-      console.log(action.payload.products);
       return {
         ...state,
-        allProducts: [...action.payload.products],
-        filterproducts: [...action.payload.products],
+        allProducts: [...action.payload],
+        filterproducts: [...action.payload],
       };
 
     case "UPDATE_FILTER":
@@ -65,7 +64,7 @@ const productReducer = (state, action) => {
       };
     case "SEARCH":
       var { allProducts } = state;
-      var product = [...allProducts]; 
+      var product = [...allProducts];
       const { text } = state;
       if (text != "") {
         var searched = product.filter((v) =>

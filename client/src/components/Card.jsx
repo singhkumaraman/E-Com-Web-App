@@ -15,7 +15,7 @@ const Card = (curr) => {
               maximumSignificantDigits: 3,
               style: "currency",
               currency: "INR",
-            }).format(price / 100)}
+            }).format(price)}
           </div>
         </div>
       </div>

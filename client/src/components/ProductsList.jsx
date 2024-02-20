@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 const ProductsList = ({ items }) => {
+  const context = useContext(CartContext);
   return (
     <div className="grid grid-cols-3 gap-6 items-center">
       {items ? (
@@ -25,7 +27,7 @@ const ProductsList = ({ items }) => {
                     <span className="block text-sm font-semibold">
                       Price :{" "}
                     </span>
-                    <span className="block cursor-pointer rounded-md border border-gray-300 p-1 px-2 text-xs font-medium">
+                    <span className="block cursor-pointer rounded-md  p-1 px-2 text-xs font-medium">
                       {Intl.NumberFormat("en-IN", {
                         maximumSignificantDigits: 3,
                         style: "currency",
@@ -34,6 +36,9 @@ const ProductsList = ({ items }) => {
                     </span>
                   </div>
                   <button
+                    onClick={() => {
+                      context.addToCart(_);
+                    }}
                     type="button"
                     className="mt-4 w-full rounded-sm bg-green-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
@@ -50,5 +55,4 @@ const ProductsList = ({ items }) => {
     </div>
   );
 };
-
 export default ProductsList;

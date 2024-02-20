@@ -3,8 +3,8 @@ import { Star } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
-import CartAmountToggle from "./components/CartAmountToggle";
-import { CartContext } from "./context/CartContext";
+// import CartAmountToggle from "./components/CartAmountToggle";
+import { CartContext } from "../context/CartContext";
 const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
@@ -17,7 +17,7 @@ const Product = () => {
     setCount(count > 1 ? count - 1 : 1);
   };
   const getSingleProduct = async (id) => {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+    const response = await fetch(`http://localhost:5000/api/product/${id}`, {
       method: "GET",
       headers: {
         "Context-Type": "application/json",
@@ -29,6 +29,7 @@ const Product = () => {
     } else {
       throw error("Error 404");
     }
+    console.log(product);
   };
   useEffect(() => {
     getSingleProduct(id);
@@ -72,15 +73,15 @@ const Product = () => {
               <br></br>
               <div className=" flex items-center justify-between">
                 <div className=" flex items-center">
-                  <span className="mr-3 text-sm font-semibold">Stock :</span>
-                  <div className="relative">{product.count}</div>
+                  <span className="mr-3 text-sm font-semibold">Stock:</span>
+                  <div className="relative">{product.stock}</div>
                 </div>
                 <div>
-                  <CartAmountToggle
+                  {/* <CartAmountToggle
                     count={count}
                     increment={setIncreaseCount}
                     decrement={setDecreaseCount}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
@@ -90,12 +91,12 @@ const Product = () => {
                   maximumSignificantDigits: 3,
                   style: "currency",
                   currency: "INR",
-                }).format(product.price * 50)}
+                }).format(product.price)}
               </span>
               <button
                 type="button"
                 onClick={() => {
-                  addToCart(id, count, product);
+                  addToCart(product);
                 }}
                 className="rounded-md bg-blue-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >

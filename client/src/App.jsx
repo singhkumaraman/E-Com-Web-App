@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
-// import Product from "./pages/Product";
+import Product from "./pages/Product";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Error from "./pages/Error";
@@ -23,7 +23,7 @@ const App = () => {
             <Route path="/products" element={<Products />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<Signup />}></Route>
-            {/* <Route path="/product/:id" element={<Product />}></Route> */}
+            <Route path="/product/:id" element={<Product />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="*" element={<Error />}></Route>

@@ -14,6 +14,11 @@ const OrderSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    old_orders: {
+      type: mongoose.Schema.Types.ObjectId,
+      req: "Orders",
+      default: null,
+    },
   },
   {
     timestamps: true,

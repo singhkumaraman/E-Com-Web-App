@@ -6,7 +6,7 @@ const Products = () => {
   const { filterproducts, updateFilter, clearFilter, text, price, max, min } =
     context;
   return (
-    <div className="py-10 px-22 mx-16 my-10 ">
+    <div className="py-10 px-22 mx-16 my-10">
       <div className="grid grid-cols-5 gap-8">
         <div className="col-span-1 border border-gray-300 rounded-md h-[620px]">
           <div className="px-6 py-2">

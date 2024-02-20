@@ -7,4 +7,12 @@ const fetchProduct = async (resquest, response) => {
     response.status(500).json({ message: "internal server error" });
   }
 };
-module.exports = { fetchProduct };
+const fetchSingleproduct = async (request, response) => {
+  try {
+    const singleProduct = await Products.findOne({ id: request.params.id });
+    response.status(200).json(singleProduct);
+  } catch (e) {
+    response.status(500).json({ message: "internal server error" });
+  }
+};
+module.exports = { fetchProduct, fetchSingleproduct };
