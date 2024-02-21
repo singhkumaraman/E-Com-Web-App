@@ -11,6 +11,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Orders from "./pages/Orders";
+import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
 const App = () => {
   return (
     <BrowserRouter>
@@ -26,6 +29,9 @@ const App = () => {
             <Route path="/product/:id" element={<Product />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/orders" element={<Orders />}></Route>
+            <Route path="/orders/success" element={<Success />}></Route>
+            <Route path="/orders/cancel" element={<Cancel />}></Route>
             <Route path="*" element={<Error />}></Route>
           </Routes>
         </div>

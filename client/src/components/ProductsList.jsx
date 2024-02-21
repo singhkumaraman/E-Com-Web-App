@@ -15,6 +15,7 @@ const ProductsList = ({ items }) => {
                   alt="Laptop"
                   className="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] lg:h-[200px]"
                 />
+
                 <div className="p-4">
                   <h1 className="inline-flex items-center text-lg font-semibold">
                     {_.brand}
@@ -31,7 +32,7 @@ const ProductsList = ({ items }) => {
                       {Intl.NumberFormat("en-IN", {
                         maximumSignificantDigits: 3,
                         style: "currency",
-                        currency: "INR",
+                        currency: "USD",
                       }).format(_.price)}
                     </span>
                   </div>

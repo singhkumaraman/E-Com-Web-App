@@ -3,19 +3,12 @@ import { Star } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
-// import CartAmountToggle from "./components/CartAmountToggle";
 import { CartContext } from "../context/CartContext";
 const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
   const { addToCart } = useContext(CartContext);
-  const setIncreaseCount = () => {
-    setCount(count === stock ? stock : count + 1);
-  };
-  const setDecreaseCount = () => {
-    setCount(count > 1 ? count - 1 : 1);
-  };
   const getSingleProduct = async (id) => {
     const response = await fetch(`http://localhost:5000/api/product/${id}`, {
       method: "GET",
@@ -29,7 +22,6 @@ const Product = () => {
     } else {
       throw error("Error 404");
     }
-    console.log(product);
   };
   useEffect(() => {
     getSingleProduct(id);
@@ -39,9 +31,9 @@ const Product = () => {
       <div className="mx-auto max-w-5xl px-5 py-24">
         <div className="mx-auto flex flex-wrap items-center lg:w-4/5">
           <img
-            alt="Nike Air Max 21A"
+            alt="Opps!!"
             className="h-64 w-full rounded-xl object-cover lg:h-96 lg:w-1/2"
-            src={product.image}
+            src={product.images && product.images[0]}
           />
           <div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:pl-10">
             <h2 className="text-2xl font-bold tracking-widest text-gray-500">
@@ -49,8 +41,7 @@ const Product = () => {
             </h2>
             <p className="leading-relaxed">{product.description}</p>
             <div className="my-4 flex gap-2 items-center">
-              <div>{Math.floor(Math.random() * 5) + 1} </div>
-              {/* <div>{product.rating.rate} </div> */}
+              <div>{product.rating} </div>
               <div>
                 <Star size={16} className="text-yellow-500" />
               </div>
@@ -76,13 +67,6 @@ const Product = () => {
                   <span className="mr-3 text-sm font-semibold">Stock:</span>
                   <div className="relative">{product.stock}</div>
                 </div>
-                <div>
-                  {/* <CartAmountToggle
-                    count={count}
-                    increment={setIncreaseCount}
-                    decrement={setDecreaseCount}
-                  /> */}
-                </div>
               </div>
             </div>
             <div className="flex items-center justify-between">
@@ -90,7 +74,7 @@ const Product = () => {
                 {Intl.NumberFormat("en-IN", {
                   maximumSignificantDigits: 3,
                   style: "currency",
-                  currency: "INR",
+                  currency: "USD",
                 }).format(product.price)}
               </span>
               <button

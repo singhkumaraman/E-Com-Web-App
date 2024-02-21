@@ -15,11 +15,19 @@ export function CartContextProvider({ children }) {
   const removeItem = (id) => {
     //     dispatch({ type: "REMOVE_ITEM", payload: id });
   };
+  const increaseCount = (id) => {
+    dispatch({ type: "INCREASE_COUNT", payload: id });
+  };
+  const decreaseCount = (id) => {
+    dispatch({ type: "DECREASE_COUNT", payload: id });
+  };
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
   }, [state.cart]);
   return (
-    <CartContext.Provider value={{ ...state, addToCart, removeItem }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, removeItem, decreaseCount, increaseCount }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -85,7 +85,7 @@ const login = async (request, response) => {
   }
 };
 const generateToken = (id) => {
-  return jwt.sign({ id }, "6204", {
+  return jwt.sign({ id }, process.env.SECRET_KEY, {
     expiresIn: "1d",
   });
 };

@@ -101,10 +101,10 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      to="/contact"
+                      to="/orders"
                       className="block py-2 pr-4 pl-3 text-white rounded  lg:bg-transparent lg:p-0 lg:hover:text-primary-700"
                     >
-                      Contact
+                      Orders
                     </Link>
                   </li>
                 </ul>
@@ -216,10 +216,10 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      to="/contact"
+                      to="/orders"
                       className="block py-2 pr-4 pl-3 text-white rounded  lg:bg-transparent lg:p-0 lg:hover:text-primary-700"
                     >
-                      Contact
+                      Orders
                     </Link>
                   </li>
                 </ul>

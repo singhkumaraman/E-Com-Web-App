@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const connectDataBase = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://aman:aman@cluster0.fuorplv.mongodb.net/Ecom"
-    );
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Database Connected");
   } catch (error) {
     console.error("Error connecting to the database:", error.message);
