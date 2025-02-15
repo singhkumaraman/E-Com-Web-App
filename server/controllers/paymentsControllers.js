@@ -1,6 +1,7 @@
 const Product = require("../models/Products");
 // import Product from "../models/Products";
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
+//just learning branching merging and pull request.
 const checkOut = async (request, response) => {
   try {
     const items = await Product.find({});
@@ -22,7 +23,7 @@ const checkOut = async (request, response) => {
       cancel_url: `${process.env.CLIENT_URL}/orders/cancel`,
     });
 
-    response.status(200).json({ session });
+    response.status(301).json({ session });
   } catch (error) {
     console.error(error);
     response.status(500).json({ error: "Internal Server Error" });
